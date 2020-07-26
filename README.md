@@ -1,6 +1,26 @@
 # sparkline
 Generate SVG sparklines with PHP
 
+This is a port of [fnando/sparkline](https://github.com/fnando/sparkline). It does not have many of the features that the JavaScript version does, but can still generate pretty SVG sparklines from a dataset. Here's how it works:
+
+## Usage
+This is a minimum working example:
+```php
+require_once('sparkline.php'); // Or whatever the path is
+sparkline('sparkline', [1, 5, 2, 4, 8, 3, 7]);
+```
+
+## API
+### `sparkline($svgClass, $values, $lineColor, $fillColor, $options)`
+| Parameter  | Default Value                                                         | Description                                                                                  |
+|------------|-----------------------------------------------------------------------|----------------------------------------------------------------------------------------------|
+| $svgClass  | (Required)                                                            | The CSS class for your sparkline. You can use this to style specific sparklines.             |
+| $values    | (Required)                                                            | An array of the values to be graphed. Example: `[1,2,3,4,5]`;                                |
+| $lineColor | `'red'`                                                               | A value that will be put into the `stroke` attribute of the line path. CSS colors work.      |
+| $fillColor | `'none'`                                                              | A value that will be put into the `fill` attribute of the sparkline's fill. CSS colors work. |
+| $options   | `[     'strokeWidth' => 3,     'width' => 100,     'height' => 30, ]` | An array of options for the sparkline.                                                       |
+
+
 ## License
 (The MIT License)
 

@@ -1,5 +1,5 @@
 # sparkline
-Generate SVG sparklines with PHP
+## Generate SVG sparklines with PHP
 
 This is a port of [fnando/sparkline](https://github.com/fnando/sparkline). It does not have many of the features that the JavaScript version does, but can still generate pretty SVG sparklines from a dataset. Here's how it works:
 

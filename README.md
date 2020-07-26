@@ -1,4 +1,9 @@
 # sparkline
+![License](https://img.shields.io/github/license/jxxe/sparkline)
+![GitHub top language](https://img.shields.io/github/languages/top/jxxe/sparkline)
+![GitHub last commit](https://img.shields.io/github/last-commit/jxxe/sparkline)
+![GitHub stars](https://img.shields.io/github/stars/jxxe/sparkline?style=social)
+
 This is a port of [fnando/sparkline](https://github.com/fnando/sparkline). It does not have many of the features that the JavaScript version does, but can still generate pretty SVG sparklines from a dataset. Here's how it works:
 
 ## Usage

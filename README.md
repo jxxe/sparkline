@@ -9,6 +9,8 @@ This is a minimum working example:
 require_once('sparkline.php'); // Or whatever the path is
 sparkline('sparkline', [1, 5, 2, 4, 8, 3, 7]);
 ```
+It will output an SVG that looks like this:
+!()[https://i.imgur.com/UiZKmH0.png]
 
 ## API
 ### `sparkline($svgClass, $values, $lineColor, $fillColor, $options)`

@@ -80,5 +80,3 @@ function sparkline($svgClass, $values, $lineColor = 'red', $fillColor = 'none', 
     
     return $svg;
 }
-
-echo sparkline('sparkline', [1, 5, 2, 4, 8, 3, 7]);

@@ -25,13 +25,13 @@ function sparkline($svgClass, $values, $lineColor = 'red', $fillColor = 'none', 
         return;
     }
 
-    $svg = '<svg class="' . $svgClass . '">';
-
     $options = $options ?? [
         'strokeWidth' => 3,
         'width' => 100,
         'height' => 30,
     ];
+
+    $svg = '<svg style="width:' . $options['width'] . 'px;height:' . $options['height'] . 'px" class="' . $svgClass . '">';
 
     $strokeWidth = $options['strokeWidth'];
     $width = $options['width'];

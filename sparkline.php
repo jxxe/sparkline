@@ -78,5 +78,5 @@ function sparkline($svgClass, $values, $lineColor = 'red', $fillColor = 'none', 
     $svg .= $path;
     $svg .= '</svg>';
     
-    return $svg;
+    return '<!-- Generated with https://github.com/jxxe/sparkline/ -->' . $svg;
 }

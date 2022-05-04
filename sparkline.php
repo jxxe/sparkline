@@ -1,7 +1,6 @@
 <?php
 /**
  * Generate SVG sparklines with PHP
- * @author Jerome Paulos
  * @version 1.0.0
  * @license MIT
  * @link https://github.com/jxxe/sparkline/

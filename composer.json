@@ -1,0 +1,15 @@
+{
+    "name": "amir/sparkline",
+    "autoload": {
+        "psr-4": {
+            "Amir\\Sparkline\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Amir Salehi",
+            "email": "iamamirsalehi@gmail.com"
+        }
+    ],
+    "require": {}
+}

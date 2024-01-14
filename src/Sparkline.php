@@ -40,9 +40,11 @@ class Sparkline
         return $this->math;
     }
 
-    public function setMath(Math $math): void
+    public function setMath(Math $math): self
     {
         $this->math = $math;
+
+        return $this;
     }
 
     public function getLineColor(): string
@@ -50,9 +52,11 @@ class Sparkline
         return $this->lineColor;
     }
 
-    public function setLineColor(string $lineColor): void
+    public function setLineColor(string $lineColor): self
     {
         $this->lineColor = $lineColor;
+
+        return $this;
     }
 
     public function getFillColor(): string
@@ -60,9 +64,11 @@ class Sparkline
         return $this->fillColor;
     }
 
-    public function setFillColor(string $fillColor): void
+    public function setFillColor(string $fillColor): self
     {
         $this->fillColor = $fillColor;
+
+        return $this;
     }
 
     public function getOptions(): array
@@ -74,9 +80,11 @@ class Sparkline
         ] : $this->options;
     }
 
-    public function setOptions(array $options): void
+    public function setOptions(array $options): self
     {
         $this->options = $options;
+
+        return $this;
     }
 
     private function buildElement($tag, $attrs): string

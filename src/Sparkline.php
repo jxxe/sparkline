@@ -20,28 +20,9 @@ class Sparkline
             return null;
         }
 
-        $options = new Options([
-            'strokeWidth' => 3,
-            'width' => 100,
-            'height' => 30,
-        ], $numbers);
+        $options = new Options($this->options, $numbers);
         $svg = $this->initSvg($options, $svgClass);
-
-        $dataPoints = [];
-
-        $pathY = $this->math->getY($options->getMaxNumber(), $options->getHeight(), $options->getStrokeWidth(), $options->getNumbers()[0]);
-        $pathCoords = "M 0 {$pathY}";
-
-        foreach ($options->getNumbers() as $index => $value) {
-            $x = $index * $options->getOffset();
-            $y = $this->math->getY($options->getMaxNumber(), $options->getHeight(), $options->getStrokeWidth(), $value);
-            $dataPoints[$index] = [
-                'index' => $index,
-                'x' => $x,
-                'y' => $y
-            ];
-            $pathCoords .= " L {$x} {$y}";
-        }
+        $pathCoords = $this->generatePathCoords($options);
 
         $path = $this->generatePath($pathCoords, $options->getStrokeWidth());
         $fillCoords = "{$pathCoords} V {$options->getFullHeight()} L 0 {$options->getFullHeight()} Z";
@@ -52,6 +33,50 @@ class Sparkline
         $svg .= '</svg>';
 
         return $svg;
+    }
+
+    public function getMath(): Math
+    {
+        return $this->math;
+    }
+
+    public function setMath(Math $math): void
+    {
+        $this->math = $math;
+    }
+
+    public function getLineColor(): string
+    {
+        return $this->lineColor;
+    }
+
+    public function setLineColor(string $lineColor): void
+    {
+        $this->lineColor = $lineColor;
+    }
+
+    public function getFillColor(): string
+    {
+        return $this->fillColor;
+    }
+
+    public function setFillColor(string $fillColor): void
+    {
+        $this->fillColor = $fillColor;
+    }
+
+    public function getOptions(): array
+    {
+        return empty($this->options) ? [
+            'strokeWidth' => 3,
+            'width' => 100,
+            'height' => 30,
+        ] : $this->options;
+    }
+
+    public function setOptions(array $options): void
+    {
+        $this->options = $options;
     }
 
     private function buildElement($tag, $attrs): string
@@ -91,43 +116,17 @@ class Sparkline
         return '<svg style="width:' . $options->getWidth() . 'px;height:' . $options->getHeight() . 'px" class="' . $svgClass . '">';
     }
 
-    public function getMath(): Math
+    private function generatePathCoords(Options $options): string
     {
-        return $this->math;
-    }
+        $pathY = $this->math->getY($options->getMaxNumber(), $options->getHeight(), $options->getStrokeWidth(), $options->getNumbers()[0]);
+        $pathCoords = "M 0 {$pathY}";
 
-    public function setMath(Math $math): void
-    {
-        $this->math = $math;
-    }
+        foreach ($options->getNumbers() as $index => $value) {
+            $x = $index * $options->getOffset();
+            $y = $this->math->getY($options->getMaxNumber(), $options->getHeight(), $options->getStrokeWidth(), $value);
+            $pathCoords .= " L {$x} {$y}";
+        }
 
-    public function getLineColor(): string
-    {
-        return $this->lineColor;
-    }
-
-    public function setLineColor(string $lineColor): void
-    {
-        $this->lineColor = $lineColor;
-    }
-
-    public function getFillColor(): string
-    {
-        return $this->fillColor;
-    }
-
-    public function setFillColor(string $fillColor): void
-    {
-        $this->fillColor = $fillColor;
-    }
-
-    public function getOptions(): array
-    {
-        return $this->options;
-    }
-
-    public function setOptions(array $options): void
-    {
-        $this->options = $options;
+        return $pathCoords;
     }
 }

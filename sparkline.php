@@ -11,9 +11,9 @@ function getY($max, $height, $diff, $value) {
 }
 
 function buildElement($tag, $attrs) {
-    $element = '<' . $tag . ' ';
+    $element = '<' . $tag;
     foreach($attrs as $attr => $value) {
-        $element .= $attr . '="' . $value . '"';
+        $element .= ' '.$attr . '="' . $value . '"';
     }
     $element .= '></' . $tag . '>';
     return $element;
